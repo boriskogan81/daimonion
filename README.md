@@ -1,4 +1,4 @@
-#Daimonion
+# Daimonion
 
 Daimonion is an authentication microservice built with Express, Bookshelf and Redis. It allows 
 connected applications to pass users for registration and login, returning tokens, and 
@@ -7,17 +7,17 @@ Daimonion checks the token to see whether it is still valid. If the token is val
 Daimonion creates and stores a new token, and passes it back to the requesting application. 
 
 
-##Why use Daimonion?
+## Why use Daimonion?
 
 If you don't want to deal with authentication inside your app, or are using multiple apps/services
 which require authenticating users
 
-##How does it work?
+## How does it work?
 Daimonion uses Bookshelf to manage RDBMS databases (in the example, I'm using MySQL, but it's 
 trivial to switch to PostgreSQL or SQLite) to persistently store user data, and Redis to quickly 
 retrieve user data on authentication requests. 
 
-##Installation
+## Installation
 ```$xslt
 git clone https://github.com/boriskogan81/daimonion.git
 //...change to /daimonion directory
@@ -32,10 +32,10 @@ knex migrate:latest
 npm start
 ```
 
-##Usage
+## Usage
 Instructions coming soon
 
-##Tests
+## Tests
 Instructions coming soon
 
 ## Contributing
