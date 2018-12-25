@@ -10,7 +10,7 @@ Daimonion creates and stores a new token, and passes it back to the requesting a
 ## Why use Daimonion?
 
 If you don't want to deal with authentication inside your app, or are using multiple apps/services
-which require authenticating users
+which require authenticating users.
 
 ## How does it work?
 Daimonion uses Bookshelf to manage RDBMS databases (in the example, I'm using MySQL, but it's 
@@ -19,25 +19,27 @@ retrieve user data on authentication requests.
 
 ## Installation
 ```$xslt
-git clone https://github.com/boriskogan81/daimonion.git
+$ git clone https://github.com/boriskogan81/daimonion.git
 //...change to /daimonion directory
-npm install
+$ npm install
 
 //Copy the files in the config_templates folder into the config folder at root level, 
 //make adjustments as necessary
 //Run initial Knex migration:
 
-knex migrate:latest
+$ knex migrate:latest
 
-npm start
+$ npm start
 ```
 
 ## Usage
-Instructions coming soon
+Route registration, login and authentication requests to the appropriate routes, so that your main backend application doesn't need to worry about dealing with these things. 
 
 ## Tests
-Instructions coming soon
-
+Daimonion uses in-memory SQLite for testing. The databases interface is the same (Bookshelf/Knex) as for the normal app. Migrations run on every test run, to ensure that the structure of the database is up to date, and when the tests are done running, any stored data/tables disappear.  
+```
+$ npm run test
+```
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
