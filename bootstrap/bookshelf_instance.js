@@ -1,14 +1,16 @@
 'use strict';
-const env = process.env.NODE_ENV;
+let dbConfig, knex;
 
-let dbConfig;
-
-if(env === 'test')
-    dbConfig = require('../config/db_config')[env];
-else
+if (process.env.NODE_ENV === 'test') {
+    dbConfig = require('../config/db_config')['test'];
+    knex = require('knex')(dbConfig);
+    knex.processFlag = 'test';
+}
+else{
     dbConfig = require('../config/db_config')['production'];
+    knex = require('knex')(dbConfig);
+}
 
-const knex = require('knex')(dbConfig);
 const jsonColumns = require('bookshelf-json-columns');
 
 const bookshelf = require('bookshelf')(knex);

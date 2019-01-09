@@ -23,6 +23,7 @@ let testToken;
 
 before(async function (done) {
     await knex.migrate.latest();
+    await knex.seed.run({directory: './seeds'});
     done();
 });
 
