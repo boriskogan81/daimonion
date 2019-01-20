@@ -27,6 +27,15 @@ before(async function (done) {
     done();
 });
 
+describe('/GET /api/ping', function() {
+    it('should return a 200 response ',
+        function (done){
+            request(app)
+                .get('/api/ping')
+                .expect(200, done)
+        });
+});
+
 describe('/POST /api/authentication/register', function() {
     it('should return a 200 response if we pass proper registration credentials',
         function (done){

@@ -4,8 +4,6 @@ const express = require('express');
 const User = require('../models/user');
 const Token = require('../models/token').model;
 const securityConfig = require('../config/security_config');
-const ipFilter = require('express-ipfilter').IpFilter;
-const frontGateIps = securityConfig.frontgateIps;
 const redis = require('../redis/redis');
 const logger = require('../bootstrap/winston');
 const uuid4 = require('uuid4');
@@ -51,7 +49,7 @@ const updateToken = async (token_id) => {
     return savedToken.attributes.token;
 };
 
-router.post('/login', ipFilter(frontGateIps, {mode: 'allow'}), async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const {username, password} = req.body;
         logger.info(`Login attempt by ${username}`);
@@ -83,7 +81,7 @@ router.post('/login', ipFilter(frontGateIps, {mode: 'allow'}), async (req, res) 
     }
 });
 
-router.post('/register', ipFilter(frontGateIps, {mode: 'allow'}), async (req, res) => {
+router.post('/register', async (req, res) => {
     try {
         let {username, password, email, phone, password_confirm, first_name, last_name} = req.body;
         logger.info(`Registration attempt by ${username}`);
@@ -114,7 +112,7 @@ router.post('/register', ipFilter(frontGateIps, {mode: 'allow'}), async (req, re
     }
 });
 
-router.post('/authenticate', ipFilter(frontGateIps, {mode: 'allow'}), async (req, res) => {
+router.post('/authenticate', async (req, res) => {
     const checkToken = req.body.token;
     logger.info(`Authentication attempt  with ${checkToken}`);
     try {
