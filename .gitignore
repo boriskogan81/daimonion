@@ -9,6 +9,9 @@ logs
 # Config
 /config/*
 
+#App.yaml
+app.yaml
+
 # Editor directories and files
 .idea
 .vscode
